@@ -9,7 +9,7 @@ pipeline {
         stage('Clone Source Code') {
             steps {
             	echo 'Clone Source Code ...'
-				git branch: 'main', url: 'https://github.com/j3ffk3/nccu-lab-2020.git'
+				git branch: 'main', url: 'https://github.com/106306067/nccu-lab-2020.git'
             }
         }
 		
@@ -29,7 +29,7 @@ pipeline {
             steps {
             	dir("recommendation") {
 					sh """
-						mvn clean package sonar:sonar -Dsonar.projectKey=recommendation-jeff -Dsonar.projectName=recommendation-jeff
+						mvn clean package sonar:sonar -Dsonar.projectKey=recommendation-106306067 -Dsonar.projectName=recommendation-106306067
 					"""
 				}
             }
@@ -52,7 +52,7 @@ pipeline {
             steps {
             	dir("recommendation/target") {
 					sh """
-						oc project ibm-jeff
+						oc project 106306067
 						oc start-build bc/recommendation --from-file recommendation-0.0.1-SNAPSHOT.jar -F
 					"""
 				}
